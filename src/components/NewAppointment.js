@@ -3,7 +3,22 @@ import React, { Component } from 'react';
 class NewAppointment extends Component {
 
     state = {
+        appointment: {
+            petName: '',
+            owner: '',
+            date: '',
+            time: '',
+            symptoms: ''
+        }
+    }
 
+    handleChange = (e) => {
+        this.setState({
+            appointment: {
+                ...this.state.appointment, // esta linea toma una copia, se recomienda hacerlo
+                [e.target.name] : [e.target.value]
+            }
+        });
     }
 
     render() {
@@ -22,7 +37,9 @@ class NewAppointment extends Component {
                                     type="text" 
                                     name="petName" 
                                     className="form-control" 
-                                    placeholder="Pet name" />
+                                    placeholder="Pet name" 
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.petName}/>
                             </div>
                         </div>
 
@@ -33,7 +50,9 @@ class NewAppointment extends Component {
                                     type="text" 
                                     name="ownerName" 
                                     className="form-control" 
-                                    placeholder="Pet name" />
+                                    placeholder="Owner name"
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.owner} />
                             </div>
                         </div>
 
@@ -43,14 +62,18 @@ class NewAppointment extends Component {
                                 <input 
                                     type="date" 
                                     name="date" 
-                                    className="form-control"/>
+                                    className="form-control"
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.date}/>
                             </div>
                             <label className="col-sm-4 col-lg-2 col-form-label">Time</label>
                             <div className="col-sm-8 col-lg-10">
                                 <input 
                                     type="time" 
                                     name="time" 
-                                    className="form-control" />
+                                    className="form-control"
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.time} />
                             </div>
                         </div>
 
@@ -60,7 +83,9 @@ class NewAppointment extends Component {
                                 <textarea
                                     className="form-control" 
                                     name="symptoms"
-                                    placeholder="Describe the symptoms">
+                                    placeholder="Describe the symptoms"
+                                    onChange={this.handleChange}
+                                    value={this.state.appointment.symptoms}>
 
                                 </textarea>
                            
