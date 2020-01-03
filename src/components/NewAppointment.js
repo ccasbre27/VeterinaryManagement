@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from 'uuid';
 
 class NewAppointment extends Component {
 
@@ -30,7 +31,7 @@ class NewAppointment extends Component {
         const { petName, owner, date, time, symptoms } = this.state.appointment;
 
         // validar que los campos estén llenos
-        if (petName === '' || owner === '' || date === '' || time === '' || symptomswner === '') {
+        if (petName === '' || owner === '' || date === '' || time === '' || symptoms === '') {
             this.setState({
                 error: true
             });
@@ -38,6 +39,13 @@ class NewAppointment extends Component {
             // detener la ejecución
             return;
         }
+
+        // generar objeto con los datos
+        const newAppointment = {...this.state.appointment};
+        newAppointment.id = uuid();
+
+        // agregamos al cita
+        this.props.createNewAppointment(newAppointment);
 
         
     }
