@@ -9,7 +9,8 @@ class NewAppointment extends Component {
             date: '',
             time: '',
             symptoms: ''
-        }
+        },
+        error: false
     }
 
     handleChange = (e) => {
@@ -21,6 +22,26 @@ class NewAppointment extends Component {
         });
     }
 
+    handleSubmit = (e) => {
+        // para prevenir que se envíen los datos
+        e.preventDefault();
+
+        // extraer los datos del state con destructuring
+        const { petName, owner, date, time, symptoms } = this.state.appointment;
+
+        // validar que los campos estén llenos
+        if (petName === '' || owner === '' || date === '' || time === '' || symptomswner === '') {
+            this.setState({
+                error: true
+            });
+
+            // detener la ejecución
+            return;
+        }
+
+        
+    }
+
     render() {
         return (
             <div className="card mt-5 py-5">
@@ -28,7 +49,8 @@ class NewAppointment extends Component {
                     <h2 className="card-title text-center mb-5">
                         Enter the information to create a new appointment
                     </h2>
-                    <form>
+                    <form
+                        onSubmit={this.handleSubmit}>
 
                         <div class="form-group">
                             <label className="col-sm-4 col-lg-2 col-form-label">Pet Name</label>
