@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
 
+const stateInicial = {
+    appointment: {
+        petName: '',
+        owner: '',
+        date: '',
+        time: '',
+        symptoms: ''
+    },
+    error: false
+}
+
 class NewAppointment extends Component {
 
-    state = {
-        appointment: {
-            petName: '',
-            owner: '',
-            date: '',
-            time: '',
-            symptoms: ''
-        },
-        error: false
-    }
+    state = {...stateInicial}
 
     handleChange = (e) => {
         this.setState({
@@ -47,6 +49,10 @@ class NewAppointment extends Component {
         // agregamos al cita
         this.props.createNewAppointment(newAppointment);
 
+        // reseteamos el state
+        this.setState({
+            ...stateInicial
+        });
         
     }
 
@@ -65,6 +71,7 @@ class NewAppointment extends Component {
                     { error &&
                         <div className="alert alert-danger mt-2 mb-5 text-center">All the fields are required </div>
                     }  
+                    
                     <form
                         onSubmit={this.handleSubmit}>
 
@@ -124,7 +131,6 @@ class NewAppointment extends Component {
                                     placeholder="Describe the symptoms"
                                     onChange={this.handleChange}
                                     value={this.state.appointment.symptoms}>
-
                                 </textarea>
                            
                             </div>
