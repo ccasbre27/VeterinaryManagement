@@ -20,6 +20,19 @@ class App extends Component {
 
   }
 
+  deleteAppointment = (id) => {
+    // copia del state
+    const currentAppointments = [...this.state.appointments];
+
+    // filtrar para obtener los elementos diferentes del id para poder actualizar el estado
+    const appointments = currentAppointments.filter( app => app.id !== id);
+
+    this.setState({
+      appointments
+    });
+
+  }
+
   render(){
     return (
       <div className="container">
@@ -33,7 +46,8 @@ class App extends Component {
           </div>
           <div className="col-md-10 mx-auto">
             <ListAppointments 
-              appointments={this.state.appointments}/>
+              appointments={this.state.appointments}
+              deleteAppointment={this.deleteAppointment} />
           </div>
         </div>
       </div>

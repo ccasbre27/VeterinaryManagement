@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Appointment = ({ appointment }) => {
+const Appointment = ({ appointment, deleteAppointment }) => {
     return (
         <div className="media mt-3">
             <div className="media-body">
@@ -9,6 +9,11 @@ const Appointment = ({ appointment }) => {
                 <p className="card-text"><span>Date: </span> {appointment.date} </p>
                 <p className="card-text"><span>Time: </span> {appointment.time} </p>
                 <p className="card-text"><span>Symptoms: </span> {appointment.symptoms} </p>
+                <button
+                    className="btn btn-danger"
+                    onClick={ () => deleteAppointment(appointment.id)}>
+                    Delete
+                </button>
             </div>
         </div>
     );
