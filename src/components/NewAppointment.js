@@ -71,7 +71,7 @@ class NewAppointment extends Component {
                     { error &&
                         <div className="alert alert-danger mt-2 mb-5 text-center">All the fields are required </div>
                     }  
-                    
+
                     <form
                         onSubmit={this.handleSubmit}>
 
@@ -93,7 +93,7 @@ class NewAppointment extends Component {
                             <div className="col-sm-8 col-lg-10">
                                 <input 
                                     type="text" 
-                                    name="ownerName" 
+                                    name="owner" 
                                     className="form-control" 
                                     placeholder="Owner name"
                                     onChange={this.handleChange}
