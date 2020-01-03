@@ -15,12 +15,12 @@ I am using different items of React for example:
 ## Screenshots
 
 Home page: main screen
-![ScreenShot](public/home.png?raw=true)
+![](public/home.PNG?raw=true)
 
 Home page: displays all the records
-![ScreenShot](public/home_records.png?raw=true)
+![](public/home_records.PNG?raw=true)
 
 Error message: indicates to the user that there is an error
-![ScreenShot](public/error.png?raw=true)
+![](public/error.PNG?raw=true)
 
 
